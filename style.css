@@ -1,7 +1,9 @@
-/* ======================================
-   1. THEME VARIABLES
-   — Change colors, fonts, spacing, radii here
-====================================== */
+/* style.css */
+
+/*===============================================
+  1. THEME VARIABLES
+  — Change colors, fonts, spacing, radii here
+===============================================*/
 :root {
   /* Colors */
   --color-bg:            #f4f6f8;
@@ -31,10 +33,9 @@
   --radius-pill: 9999px;
 }
 
-/* ======================================
-   2. RESET & BOX-SIZING
-   — You usually don’t need to touch this
-====================================== */
+/*===============================================
+  2. RESET & BOX-SIZING
+===============================================*/
 *,
 *::before,
 *::after {
@@ -43,9 +44,9 @@
   padding: 0;
 }
 
-/* ======================================
-   3. BASE TYPOGRAPHY & LAYOUT
-====================================== */
+/*===============================================
+  3. BASE TYPOGRAPHY & LAYOUT
+===============================================*/
 html {
   font-family: var(--font-family-base);
   font-size: var(--font-size-root);
@@ -77,11 +78,11 @@ p {
   margin-bottom: var(--space-sm);
 }
 
-/* ======================================
-   4. FORM & FIELDSET STYLES
-====================================== */
+/*===============================================
+  4. FORM & FIELDSET STYLES
+===============================================*/
 fieldset {
-  position: relative;  /* for legend stacking */
+  position: relative;       /* for legend stacking */
   z-index: 0;
 
   border: 1px solid var(--color-border);
@@ -92,7 +93,7 @@ fieldset {
 }
 
 legend {
-  position: relative;  /* lift above the fieldset border */
+  position: relative;       /* lift above border */
   z-index: 1;
   background-color: var(--color-surface);
   padding: 0 var(--space-sm);
@@ -118,9 +119,9 @@ select {
   margin-top: var(--space-tiny);
 }
 
-/* ======================================
-   5. “PILL” RADIO BUTTONS
-====================================== */
+/*===============================================
+  5. “PILL” RADIO BUTTONS
+===============================================*/
 .pill-group {
   margin: var(--space-md) 0;
 }
@@ -169,9 +170,9 @@ select {
   color: var(--color-text-inverse);
 }
 
-/* ======================================
-   6. RESULTS BOX
-====================================== */
+/*===============================================
+  6. RESULTS BOX
+===============================================*/
 .results-box {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -180,9 +181,9 @@ select {
   margin-top: var(--space-sm);
 }
 
-/* ======================================
-   7. BUTTONS
-====================================== */
+/*===============================================
+  7. BUTTONS
+===============================================*/
 button {
   display: inline-block;
   padding: var(--space-sm) var(--space-lg);
@@ -200,9 +201,9 @@ button:hover {
   background-color: var(--color-primary-hover);
 }
 
-/* ======================================
-   8. RESPONSIVE TWEAKS
-====================================== */
+/*===============================================
+  8. RESPONSIVE TWEAKS
+===============================================*/
 @media (max-width: 600px) {
   html {
     font-size: 14px;
