@@ -1,0 +1,801 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 1. DOCUMENT METADATA -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Expectancy & Mortality Estimator</title>
+
+  <!-- 2. STYLESHEET -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 3. MAIN CONTAINER -->
+  <div class="container">
+    <!-- 3.1 PAGE TITLE -->
+    <h1>Life Expectancy & Mortality Estimator</h1>
+    <!-- 3.2 INSTRUCTIONAL TEXT -->
+    <p>Please fill out all required fields. Select “N/A” if a field does not apply to you.</p>
+
+    <!-- 4. FORM START -->
+    <form id="leForm">
+      
+      <!-- ===========================================
+           SECTION 1: VITALS
+      =========================================== -->
+      <fieldset>
+        <legend>1. Vitals</legend>
+
+        <!-- Age -->
+        <div class="pill-group">
+          <label for="age">Age:
+            <input type="number" id="age" name="age" required />
+          </label>
+        </div>
+
+        <!-- Gender -->
+        <div class="pill-group">
+          <label>Gender:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="gender" value="M" />
+              <span>Male</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="gender" value="F" />
+              <span>Female</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Height -->
+        <div class="pill-group">
+          <label>Height:</label>
+          <select id="heightFeet" name="heightFeet">
+            <option value="4">4 ft</option>
+            <option value="5" selected>5 ft</option>
+            <option value="6">6 ft</option>
+            <option value="7">7 ft</option>
+          </select>
+          <select id="heightInches" name="heightInches">
+            <option value="0">0 in</option>
+            <option value="1">1 in</option>
+            <option value="2">2 in</option>
+            <option value="3">3 in</option>
+            <option value="4">4 in</option>
+            <option value="5">5 in</option>
+            <option value="6">6 in</option>
+            <option value="7">7 in</option>
+            <option value="8">8 in</option>
+            <option value="9">9 in</option>
+            <option value="10">10 in</option>
+            <option value="11">11 in</option>
+          </select>
+        </div>
+
+        <!-- Weight -->
+        <div class="pill-group">
+          <label for="weight">Weight (lbs):
+            <input type="number" id="weight" name="weight" max="350" required />
+          </label>
+        </div>
+      </fieldset>
+
+
+      <!-- ===========================================
+           SECTION 2: LIFESTYLE
+      =========================================== -->
+      <fieldset>
+        <legend>2. Lifestyle</legend>
+
+        <!-- Tobacco -->
+        <div class="pill-group">
+          <label>Do you use tobacco?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="tobacco" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="tobacco" value="Yes - Smoking" />
+              <span>Smoking</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="tobacco" value="Yes - Chewing" />
+              <span>Chewing</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="tobacco" value="Yes - Vaping" />
+              <span>Vaping</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Alcohol -->
+        <div class="pill-group">
+          <label>Do you drink alcohol?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="alcohol" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="alcohol" value="Moderate" />
+              <span>Moderate</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="alcohol" value="Heavy" />
+              <span>Heavy</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Drugs -->
+        <div class="pill-group">
+          <label>Do you use non-prescription drugs?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="drugs" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="drugs" value="Yes - Past" />
+              <span>Past</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="drugs" value="Yes - Current" />
+              <span>Current</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Rehab -->
+        <div class="pill-group">
+          <label>Have you attended rehab?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="rehab" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="rehab" value="Yes - Completed" />
+              <span>Completed</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="rehab" value="Yes - Current" />
+              <span>Current</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Disability Income -->
+        <div class="pill-group">
+          <label>Do you receive disability income?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="disabilityIncome" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="disabilityIncome" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Working -->
+        <div class="pill-group">
+          <label>Are you currently working?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="working" value="Yes" />
+              <span>Yes</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="working" value="No" />
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+
+      <!-- ===========================================
+           SECTION 3: MEDICAL PROFILE
+      =========================================== -->
+      <fieldset>
+        <legend>3. Medical Profile</legend>
+
+        <!-- Diabetes -->
+        <div class="pill-group">
+          <label>Do you have diabetes?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="diabetes" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="diabetes" value="Type 1" />
+              <span>Type 1</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="diabetes" value="Type 2" />
+              <span>Type 2</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Insulin -->
+        <div class="pill-group">
+          <label>Do you take insulin?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="insulin" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="insulin" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Blood Pressure -->
+        <div class="pill-group">
+          <label>Blood Pressure Status:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="bp" value="Normal" />
+              <span>Normal</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="bp" value="Controlled" />
+              <span>Controlled</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="bp" value="Uncontrolled" />
+              <span>Uncontrolled</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Respiratory -->
+        <div class="pill-group">
+          <label>Respiratory Issues:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="respiratory" value="None" />
+              <span>None</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="respiratory" value="Asthma" />
+              <span>Asthma</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="respiratory" value="COPD" />
+              <span>COPD</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="respiratory" value="Sleep Apnea" />
+              <span>Sleep Apnea</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- CPAP -->
+        <div class="pill-group">
+          <label>Do you use CPAP for Sleep Apnea?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="cpap" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="cpap" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Kidney -->
+        <div class="pill-group">
+          <label>Do you have kidney disease or transplant?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="kidney" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="kidney" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Liver -->
+        <div class="pill-group">
+          <label>Do you have liver disease or cirrhosis?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="liver" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="liver" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- HIV -->
+        <div class="pill-group">
+          <label>HIV or AIDS?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="hiv" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="hiv" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Cancer -->
+        <div class="pill-group">
+          <label>Cancer History:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="cancer" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="cancer" value="Yes - Active" />
+              <span>Active</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="cancer" value="Yes - Remission <5 yrs" />
+              <span>Remission &lt;5 yrs</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="cancer" value="Yes - Remission >5 yrs" />
+              <span>Remission &gt;5 yrs</span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+
+      <!-- ===========================================
+           SECTION 4: MENTAL & PHYSICAL FUNCTION
+      =========================================== -->
+      <fieldset>
+        <legend>4. Mental & Physical Function</legend>
+
+        <!-- Mental Health Diagnosis -->
+        <div class="pill-group">
+          <label>Mental Health Diagnosis:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="mental" value="None" />
+              <span>None</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="mental" value="Depression" />
+              <span>Depression</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="mental" value="Bipolar" />
+              <span>Bipolar</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="mental" value="Schizophrenia" />
+              <span>Schizophrenia</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Mental Health Meds -->
+        <div class="pill-group">
+          <label>Taking Mental Health Medications?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="mentalMeds" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="mentalMeds" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Seizures -->
+        <div class="pill-group">
+          <label>Seizure Risk?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="seizures" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="seizures" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Mobility Assistance -->
+        <div class="pill-group">
+          <label>Mobility Assistance:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="mobility" value="None" />
+              <span>None</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="mobility" value="Cane" />
+              <span>Cane</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="mobility" value="Walker" />
+              <span>Walker</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="mobility" value="Wheelchair" />
+              <span>Wheelchair</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Amputation / Paralysis -->
+        <div class="pill-group">
+          <label>Amputation / Paralysis:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="amputation" value="None" />
+              <span>None</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="amputation" value="Limb Amputated" />
+              <span>Limb Amputated</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="amputation" value="Paraplegic" />
+              <span>Paraplegic</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="amputation" value="Quadriplegic" />
+              <span>Quadriplegic</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Help with ADLs -->
+        <div class="pill-group">
+          <label>Need Help with Daily Living (ADLs)?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="adl" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="adl" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Hospitalization -->
+        <div class="pill-group">
+          <label>Hospitalized in Last 12 Months?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="hospital" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="hospital" value="Yes - Emergency" />
+              <span>Emergency</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="hospital" value="Yes - Surgery" />
+              <span>Surgery</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="hospital" value="Yes - Mental Health" />
+              <span>Mental Health</span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+
+      <!-- ===========================================
+           SECTION 5: LEGAL & DRIVING HISTORY
+      =========================================== -->
+      <fieldset>
+        <legend>5. Legal & Driving History</legend>
+
+        <!-- Criminal History -->
+        <div class="pill-group">
+          <label>Criminal History:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="felony" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="felony" value="Yes - Misdemeanor" />
+              <span>Misdemeanor</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="felony" value="Yes - Felony" />
+              <span>Felony</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- License Suspended -->
+        <div class="pill-group">
+          <label>Driving License Suspended in Last 5 Years?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="license" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="license" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Reason for Suspension -->
+        <div class="pill-group">
+          <label>Reason for Suspension:</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="licenseReason" value="None" />
+              <span>None</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="licenseReason" value="DUI" />
+              <span>DUI</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="licenseReason" value="Tickets" />
+              <span>Tickets</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="licenseReason" value="Other" />
+              <span>Other</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- When Offense Occurred -->
+        <div class="pill-group">
+          <label>When was the most recent offense?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="licenseWhen" value="<1 year" />
+              <span>&lt;1 year</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="licenseWhen" value="1-3 years" />
+              <span>1–3 years</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="licenseWhen" value=">3 years" />
+              <span>&gt;3 years</span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+
+      <!-- ===========================================
+           SECTION 6: INSURANCE, LIFESTYLE & HEALTHY HABITS
+      =========================================== -->
+      <fieldset>
+        <legend>6. Insurance, Lifestyle & Healthy Habits</legend>
+
+        <!-- Ever Declined or Rated Up -->
+        <div class="pill-group">
+          <label>Ever declined or rated up for life insurance?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="insuranceDenied" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="insuranceDenied" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Receive Disability Income (repeat) -->
+        <div class="pill-group">
+          <label>Receive disability income?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="disabilityIncome" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="disabilityIncome" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Currently Working (repeat) -->
+        <div class="pill-group">
+          <label>Are you currently working?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="working" value="Yes" />
+              <span>Yes</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="working" value="No" />
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Pain Meds -->
+        <div class="pill-group">
+          <label>Use prescription pain medications daily?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="painMeds" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="painMeds" value="Daily" />
+              <span>Daily</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Tobacco (repeat) -->
+        <div class="pill-group">
+          <label>Use tobacco?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="tobacco" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="tobacco" value="Yes - Smoking" />
+              <span>Smoking</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="tobacco" value="Yes - Chewing" />
+              <span>Chewing</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="tobacco" value="Yes - Vaping" />
+              <span>Vaping</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Alcohol (repeat) -->
+        <div class="pill-group">
+          <label>Alcohol consumption?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="alcohol" value="None" />
+              <span>None</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="alcohol" value="Moderate" />
+              <span>Moderate</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="alcohol" value="Heavy" />
+              <span>Heavy</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Drugs (repeat) -->
+        <div class="pill-group">
+          <label>Drug use history?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="drugs" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="drugs" value="Yes - Current" />
+              <span>Current</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="drugs" value="Yes - Past" />
+              <span>Past</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Rehab (repeat) -->
+        <div class="pill-group">
+          <label>Rehab or treatment for alcohol/drugs?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="rehab" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="rehab" value="Yes - Current" />
+              <span>Current</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="rehab" value="Yes - Completed" />
+              <span>Completed</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Diet -->
+        <div class="pill-group">
+          <label>Do you eat fruits/vegetables daily?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="diet" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="diet" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Exercise -->
+        <div class="pill-group">
+          <label>Do you exercise at least 2×/week?</label>
+          <div>
+            <label class="pill-button">
+              <input type="radio" name="exercise" value="No" />
+              <span>No</span>
+            </label>
+            <label class="pill-button">
+              <input type="radio" name="exercise" value="Yes" />
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+
+      <!-- ===========================================
+           SECTION 7: RESULTS & SUBMISSION
+      =========================================== -->
+      <fieldset>
+        <legend>7. Results & Submission</legend>
+
+        <!-- Results Placeholder -->
+        <div id="results" class="results-box"></div>
+
+        <!-- Submit Button -->
+        <button type="submit">Calculate</button>
+      </fieldset>
+
+    </form>
+    <!-- 4. FORM END -->
+
+  </div>
+  <!-- 3. MAIN CONTAINER END -->
+
+  <!-- 5. SCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>

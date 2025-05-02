@@ -1,0 +1,210 @@
+/* ======================================
+   1. THEME VARIABLES
+   — Change colors, fonts, spacing, radii here
+====================================== */
+:root {
+  /* Colors */
+  --color-bg:            #f4f6f8;
+  --color-surface:       #ffffff;
+  --color-primary:       #1976d2;
+  --color-primary-hover: #115293;
+  --color-secondary:     #e0e0e0;
+  --color-border:        #cccccc;
+  --color-text:          #333333;
+  --color-text-inverse:  #ffffff;
+
+  /* Typography */
+  --font-family-base:    'Segoe UI', Roboto, sans-serif;
+  --font-size-root:      16px;
+  --line-height-base:    1.5;
+
+  /* Spacing */
+  --space-tiny: 0.25rem;
+  --space-sm:   0.5rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2rem;
+
+  /* Border Radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-pill: 9999px;
+}
+
+/* ======================================
+   2. RESET & BOX-SIZING
+   — You usually don’t need to touch this
+====================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ======================================
+   3. BASE TYPOGRAPHY & LAYOUT
+====================================== */
+html {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-root);
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  padding: var(--space-lg);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+p {
+  margin-bottom: var(--space-sm);
+}
+
+/* ======================================
+   4. FORM & FIELDSET STYLES
+====================================== */
+fieldset {
+  position: relative;  /* for legend stacking */
+  z-index: 0;
+
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+legend {
+  position: relative;  /* lift above the fieldset border */
+  z-index: 1;
+  background-color: var(--color-surface);
+  padding: 0 var(--space-sm);
+  margin-left: var(--space-sm);
+
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Standard form controls */
+label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+input[type="number"],
+select {
+  width: 100%;
+  padding: var(--space-sm);
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-tiny);
+}
+
+/* ======================================
+   5. “PILL” RADIO BUTTONS
+====================================== */
+.pill-group {
+  margin: var(--space-md) 0;
+}
+
+.pill-button {
+  position: relative;
+  display: inline-block;
+  margin: var(--space-tiny) var(--space-sm) var(--space-tiny) 0;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-size: 0.95rem;
+  user-select: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pill-button input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill-button span {
+  pointer-events: none;
+}
+
+/* Hover state */
+.pill-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Checked state via :has() */
+.pill-button:has(input[type="radio"]:checked) {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+.pill-button:has(input[type="radio"]:checked) span {
+  color: inherit;
+}
+
+/* Fallback for browsers without :has() */
+.pill-button input[type="radio"]:checked + span {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* ======================================
+   6. RESULTS BOX
+====================================== */
+.results-box {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-sm);
+}
+
+/* ======================================
+   7. BUTTONS
+====================================== */
+button {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: var(--space-md);
+}
+
+button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* ======================================
+   8. RESPONSIVE TWEAKS
+====================================== */
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+}
